@@ -1,6 +1,6 @@
 {
     "name": "interpolation-compiler",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "Compiles a placeholder-based template to use string interpolation",
     "license": "MIT",
     "author": {
