@@ -21,7 +21,7 @@ export function compileFnBackend<K extends string>(template: string, options: Co
     let newTemplate = `\`${template.replace(TEMPLATE_QUOTE_RE, '\\`')}\``;
 
     for (const [key, value] of existingPlaceholder) {
-        newTemplate = newTemplate.replaceAll(value, `\${data.${key}}`);
+        newTemplate = newTemplate.replaceAll(value, `\${data['${key}']}`);
     }
 
     // eslint-disable-next-line @typescript-eslint/no-implied-eval
