@@ -24,6 +24,5 @@ export function compileFnBackend<K extends string>(template: string, options: Co
         newTemplate = newTemplate.replaceAll(value, `\${data['${key}']}`);
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-implied-eval
     return Function('data', `return ${newTemplate}`) as Render<K>;
 }
