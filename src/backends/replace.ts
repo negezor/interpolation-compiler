@@ -4,19 +4,20 @@ export interface CompileReplaceBackendOptions<K extends string> {
     placeholders: Placeholders<K>;
 }
 
-export function compileReplaceBackend<K extends string>(template: string, options: CompileReplaceBackendOptions<K>): Render<K> {
+export function compileReplaceBackend<K extends string>(
+    template: string,
+    options: CompileReplaceBackendOptions<K>,
+): Render<K> {
     const placeholderEntries = Object.entries(options.placeholders) as [K, string][];
 
-    const existingPlaceholder = placeholderEntries.filter(([, search]) => (
-        template.includes(search)
-    ));
+    const existingPlaceholder = placeholderEntries.filter(([, search]) => template.includes(search));
 
     // OPTIMIZE: If you don't need to change anything, just return the string
     if (existingPlaceholder.length === 0) {
         return () => template;
     }
 
-    return (data) => {
+    return data => {
         let renderedTemplate = template;
 
         for (const [key, search] of existingPlaceholder) {

@@ -21,7 +21,10 @@ export interface CompileSliceBackendOptions<K extends string> {
     placeholders: Placeholders<K>;
 }
 
-export function compileSliceBackend<K extends string>(template: string, options: CompileSliceBackendOptions<K>): Render<K> {
+export function compileSliceBackend<K extends string>(
+    template: string,
+    options: CompileSliceBackendOptions<K>,
+): Render<K> {
     const placeholderEntries = Object.entries(options.placeholders) as [K, string][];
 
     const placeholderIndexes: [key: K, [start: number, end: number]][] = [];
@@ -30,7 +33,7 @@ export function compileSliceBackend<K extends string>(template: string, options:
         let i = -1;
 
         // biome-ignore lint/suspicious/noAssignInExpressions: compact expression
-        while ((i = template.indexOf(search, i + 1)) !== -1){
+        while ((i = template.indexOf(search, i + 1)) !== -1) {
             placeholderIndexes.push([key, [i, i + search.length]]);
         }
     }
@@ -40,9 +43,7 @@ export function compileSliceBackend<K extends string>(template: string, options:
         return () => template;
     }
 
-    placeholderIndexes.sort(([, a], [, b]) => (
-        a[0] - b[0]
-    ));
+    placeholderIndexes.sort(([, a], [, b]) => a[0] - b[0]);
 
     const entities: Entity<K>[] = [];
 
@@ -70,7 +71,7 @@ export function compileSliceBackend<K extends string>(template: string, options:
         });
     }
 
-    return (data) => {
+    return data => {
         let renderedTemplate = '';
 
         for (const entity of entities) {
