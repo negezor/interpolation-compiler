@@ -61,6 +61,6 @@
         "lint": "npm run lint:biome",
         "lint:biome": "biome lint --apply ./src",
         "benchmark": "ts-node test/benchmark.ts",
-        "docs:generate": "typedoc --theme default --out docs/reference --excludeExternals --readme none src"
+        "docs:generate": "typedoc --plugin typedoc-plugin-markdown --out docs/reference --excludeExternals --readme none src"
     }
 }
