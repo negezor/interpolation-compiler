@@ -1,8 +1,8 @@
 import type { Placeholders, Render } from '../types.js';
 
 enum EntityType {
-    Text,
-    Variable,
+    Text = 0,
+    Variable = 1,
 }
 
 interface TextEntity {
@@ -29,6 +29,7 @@ export function compileSliceBackend<K extends string>(template: string, options:
     for (const [key, search] of placeholderEntries) {
         let i = -1;
 
+        // biome-ignore lint/suspicious/noAssignInExpressions: compact expression
         while ((i = template.indexOf(search, i + 1)) !== -1){
             placeholderIndexes.push([key, [i, i + search.length]]);
         }
@@ -85,7 +86,7 @@ export function compileSliceBackend<K extends string>(template: string, options:
                 continue;
             }
 
-            throw new Error(`Unimplemented entity type`);
+            throw new Error('Unimplemented entity type');
         }
 
         return renderedTemplate;
