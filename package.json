@@ -45,6 +45,7 @@
         "rollup-plugin-typescript2": "^0.36.0",
         "tinybench": "^2.6.0",
         "ts-node": "^10.9.2",
+        "tsx": "^4.7.2",
         "typedoc": "^0.25.11",
         "typescript": "^5.3.3"
     },
