@@ -42,7 +42,6 @@
         "@biomejs/biome": "^1.6.4",
         "@types/jest": "^29.5.12",
         "@types/node": "^20.11.25",
-        "eslint-import-resolver-typescript": "^3.6.1",
         "jest": "^29.7.0",
         "rollup": "^4.12.1",
         "rollup-plugin-typescript2": "^0.36.0",
