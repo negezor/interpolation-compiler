@@ -1,3 +1,6 @@
+import { describe, it } from 'node:test';
+import { strictEqual } from 'node:assert';
+
 import { compileReplaceBackend, compileSliceBackend, compileFnBackend } from '..';
 
 const HTML_TEMPLATE = `
@@ -60,7 +63,7 @@ describe('Backends', (): void => {
             placeholders: htmlPlaceholders,
         });
         const result = render({ ...desiredRenderData });
-        expect(result).toEqual(DESIRED_TEMPLATE);
+        strictEqual(result, DESIRED_TEMPLATE);
     });
 
     it('compileFnBackend should render the template correctly', () => {
@@ -68,7 +71,7 @@ describe('Backends', (): void => {
             placeholders: htmlPlaceholders,
         });
         const result = render({ ...desiredRenderData });
-        expect(result).toEqual(DESIRED_TEMPLATE);
+        strictEqual(result, DESIRED_TEMPLATE);
     });
 
     it('compileSliceBackend should render the template correctly', () => {
@@ -76,6 +79,6 @@ describe('Backends', (): void => {
             placeholders: htmlPlaceholders,
         });
         const result = render({ ...desiredRenderData });
-        expect(result).toEqual(DESIRED_TEMPLATE);
+        strictEqual(result, DESIRED_TEMPLATE);
     });
 });
